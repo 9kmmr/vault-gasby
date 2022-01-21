@@ -1,7 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop_types"
 import { Link } from "gatsby"
-import * as styles from "./header_desktop.module.scss"
+import * as styles from "./header-desktop.module.scss"
 
 const HeaderDesktop = ({ siteTitle }) => (
   <header

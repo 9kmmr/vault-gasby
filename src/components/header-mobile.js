@@ -1,7 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop_types"
 import { Link } from "gatsby"
-import * as styles from  "./header_mobile.module.scss"
+import * as styles from  "./header-mobile.module.scss"
 
 const HeaderMobile = ({ siteTitle }) => (
     <header class={styles.header_container_mobile}>
