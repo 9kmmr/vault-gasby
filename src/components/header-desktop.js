@@ -1,5 +1,5 @@
 import * as React from "react"
-import PropTypes from "prop_types"
+import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import * as styles from "./header-desktop.module.scss"
 
