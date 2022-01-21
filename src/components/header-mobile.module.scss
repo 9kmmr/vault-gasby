@@ -1,4 +1,4 @@
-.header-container-mobile {
+.header_container_mobile {
   display: none;
 
   @media only screen and (max-width:1024px) {
@@ -6,7 +6,7 @@
   }
 }
 
-.header-container-row {
+.header_container_row {
   width: 100%;
   min-height: 50px;
   display: -webkit-box;
@@ -28,7 +28,7 @@
   }
 }
 
-.header-container-logo-mb {
+.header_container_logo_mb {
   @media only screen and (max-width:1024px) {
     background: #132741;
 
@@ -68,7 +68,7 @@
   }
 }
 
-.search-menu-mobile-container {
+.search_menu_mobile_container {
   position: relative;
   cursor: pointer;
   background-color: #214471;
