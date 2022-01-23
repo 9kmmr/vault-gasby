@@ -1,10 +1,13 @@
 import * as React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import {  faFacebook, faInstagram, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { StaticImage } from "gatsby-plugin-image"
 import * as styles from "./header-desktop.module.scss"
 
-const HeaderDesktop = ({ siteTitle }) => (
+const HeaderDesktop = ({ siteTitle }) => {  
+  const  mainSearch = (input) => {
+  }
+  return (
   <header
     class={styles.header_container_desktop}
   >
@@ -12,39 +15,38 @@ const HeaderDesktop = ({ siteTitle }) => (
       <div class={styles.header_icon_container}>
         <div class={styles.header_icon_subwrapper}>
           <a href="" target="_blank">
-            <div title="Social icon" width="24" height="24" class="dXvJtH"></div>
+          <FontAwesomeIcon icon={faFacebook} />
           </a>
           <a href="" target="_blank">
-            <div title="Social icon" width="24" height="24" class="biyPod"></div>
+          <FontAwesomeIcon icon={faInstagram} />
           </a>
           <a href="" target="_blank">
-            <div title="Social icon" width="24" height="24" class="gDPjWp"></div>
+          <FontAwesomeIcon icon={faTwitter} />
           </a>
           <a href="" target="_blank">
-            <div title="Social icon" width="24" height="24" class="kgIDzm"> </div>
+          <FontAwesomeIcon icon={faYoutube} />
           </a>
         </div>
       </div>
       <div class={styles.header_container_search}>
         <span></span>
-        <input id="MainSearchInput" value="" placeholder="Search Drivers, Teams, Venues..." spellcheck="false" class={styles.search_input} />
+        <input id="MainSearchInput" value="" placeholder="Search Drivers, Teams, Venues..." onChange={mainSearch} class={styles.search_input} />
       </div>
       <div class={styles.header_container_search_data}></div>
     </div>
     <div class={styles.header_container_row}>
-      <a href="">
         <div class={styles.header_site_logo}>
-          <StaticImage
-            src="../images/gatsby-astronaut.png"
-            width={300}
-            quality={95}
-            formats={["auto", "webp", "avif"]}
-            alt="A Gatsby astronaut"
-            style={{ marginBottom: `1.45rem` }}
-          />
+        <a href="">
+            <StaticImage
+              src="../images/mxvice-logo-rect.png"
+              width={300}
+              quality={95}
+              formats={["auto", "webp", "avif"]}
+              alt="A Gatsby astronaut"            
+            />
 
+        </a>
         </div>
-      </a>
       <nav class={styles.header_menu_dropdown}>
         <ul class={styles.menu_dropdown_contents}>
           <li class={styles.item_active}><a href="">results</a></li>
@@ -57,6 +59,7 @@ const HeaderDesktop = ({ siteTitle }) => (
             formats={["auto", "webp", "avif"]}
             alt="Delimiter"
             class={styles.delimiter}
+            
           />
           <li class={styles.item_nonactive}><a href="">about us</a></li>
         </ul>
@@ -64,13 +67,7 @@ const HeaderDesktop = ({ siteTitle }) => (
     </div>
   </header>
 )
+  }
 
-HeaderDesktop.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-HeaderDesktop.defaultProps = {
-  siteTitle: ``,
-}
 
 export default HeaderDesktop

@@ -7,22 +7,17 @@ import * as styles from "./collection.module.scss"
 const Collection = ({ siteTitle }) => (
     <div class="collection-container-all container-all">
         <div class="collection_wrapper container_wrapper_all">
-            <div class="event_image_container event_image_ct"><span
-                style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%"><span
-                    style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%"><img
-                        style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0"
-                        alt="" aria-hidden="true"
-                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4=" /></span><img
-                    alt="Comunitat Valenciana country"
-                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                    decoding="async" data-nimg="intrinsic"
-                    style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover;object-position:center" /><noscript><img
+            <div class="event_image_container event_image_ct">
+                <span
+                style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%">
+                    
+                        <img
                         alt="Comunitat Valenciana country"
                         srcSet="/_next/image?url=%2Ficons%2Fvenue.png&amp;w=256&amp;q=40 1x, /_next/image?url=%2Ficons%2Fvenue.png&amp;w=640&amp;q=40 2x"
                         src="../../../../_next/venue8db3.png?url=%2Ficons%2Fvenue.png&amp;w=640&amp;q=40"
                         decoding="async" data-nimg="intrinsic"
                         style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover;object-position:center"
-                        loading="lazy" /></noscript></span></div>
+                        loading="lazy" /></span></div>
             <div id="eventYear" class="event_title_big title_big">2021</div>
             <div id="eventName" class="event_title_big title_big">Valencia</div>
             <div id="eventDate" class="event_title_small title_small">12 November - 14 November, 2021</div>

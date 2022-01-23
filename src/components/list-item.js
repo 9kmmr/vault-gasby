@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { Link } from "gatsby"
 
 import * as styles from "./list-item.module.scss"
 import Item from "./item";
@@ -12,7 +11,7 @@ const ListItem = ({ title, type }) => {
     
     useEffect(async () => {
         let url = `${API_URL}/`;
-        year = new Date('Y');
+        let year = new Date('Y');
         let select = 'events';
         switch (type) {
             case "mxgp":
@@ -32,7 +31,7 @@ const ListItem = ({ title, type }) => {
         let events = await getEnoughData(year, url, select);
         setDatas(events);                
         
-    });
+    },[datas]);
 
     async function getEnoughData(year, url, select){
         let events = [];
@@ -54,24 +53,24 @@ const ListItem = ({ title, type }) => {
   
     
     return (
-    <div class="collection-container-section col-container-section">
-          <div class="collection-header-section col-header-section">
-            <div class="collection-title-section col-title-section">
-              <div class="collection-title-data col-title-data">{title}</div>
-              <div class="time-selector-container time-data"></div>
+    <div class={styles.collection_container_section}>
+          <div class={styles.collection_header_section}>
+            <div class={styles.collection_title_section}>
+              <div class={styles.collection_title_data}>{title}</div>
+              <div class={styles.time_selector_container}></div>
             </div>
           </div>
-          <div class="collection-body-container col-body-container">
+          <div class={styles.collection_body_container}>
             
             {datas.map(function(object, i){
                 return <Item obj={object} key={i} type={type} />;
             })}
 
-            <div role="ShowMore" class="collection-item-container col-item-container"><a>
+            <div role="ShowMore" class={styles.collection_item_container}><a>
                     <div role="ShowMore" id="ImageContainerShowMore"
-                    class="collection-item-container-more col-item-container-more"></div>
+                    class={styles.collection_item_container_more}></div>
                 </a>
-                <div title="Show more" role="ShowMore" class="collection-item-title-more col-item-title-more"><a>Show
+                <div title="Show more" role="ShowMore" class={styles.collection_item_title_more}><a>Show
                     more</a></div>
                 </div>
 

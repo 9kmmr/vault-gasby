@@ -40,6 +40,7 @@ module.exports = {
         url: process.env.WPGRAPHQL_URL || `https://botvisions.com/vault/graphql`,
       },
     },
-    `gatsby-plugin-sass`
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-fontawesome-css`
   ],
 }

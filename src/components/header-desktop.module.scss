@@ -21,7 +21,7 @@
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    background: #193153;
+    background: #FFFFFF;
 
     a {
         z-index: 1;
@@ -38,7 +38,7 @@
     padding-right: 25px;
     flex-wrap: wrap;
     box-sizing: border-box;
-    background-color: rgb(19, 39, 65);
+    background-color: #25252f;
     min-height: 60px;
     left: initial;
     bottom: initial;
@@ -53,6 +53,7 @@
         padding-left: 30px;
     }
 }
+
 .header_icon_subwrapper {
     display: flex;
     -webkit-box-align: center;
@@ -61,11 +62,15 @@
     overflow: hidden;
     max-height: 48px;
     width: 135px;
-    > a:not(:last-child) {
+
+    >a:not(:last-child) {
         margin-right: 10px;
     }
+
     a {
         z-index: 1;
+        background: transparent;
+        color: #fff;
     }
 }
 
@@ -80,6 +85,7 @@
     -ms-flex-positive: 1;
     flex-grow: 1;
     min-width: 200px;
+    background: #25252f;
 
     span:before {
         position: absolute;
@@ -114,7 +120,7 @@
     min-height: 60px;
     color: #FFFFFF;
     padding-left: 59px;
-    background: #214471;
+    background: #000000;
     border-radius: 0;
 
     @media only screen and (min-width:1976px) {
@@ -165,7 +171,7 @@
 
 .header_container_search_data {
     position: relative;
-    background-color: #132741;
+    background-color: #25252f;
     min-height: 60px;
     box-sizing: border-box;
     z-index: 2;
@@ -340,8 +346,12 @@
     color: #FF0000;
 
     :hover {
-        color: #FF0000;
+        color: #25252f;
         cursor: pointer;
+    }
+
+    a {
+        color: #000;
     }
 
     @media only screen and (min-width:1025px) and (max-width:1183px) {
@@ -376,8 +386,12 @@
     width: 90px;
 
     :hover {
-        color: #FF0000;
+        color: #25252f;
         cursor: pointer;
+    }
+
+    a {
+        color: #000;
     }
 
     @media only screen and (min-width:1025px) and (max-width:1183px) {
