@@ -6,31 +6,35 @@ import Item from "./item";
 
 const ListItem = ({ title, type }) => { 
     
-    const [datas, setDatas] = useState(null);
+    const [datas, setDatas] = useState([]);
     const API_URL = process.env.API_URL;
     
-    useEffect(async () => {
-        let url = `${API_URL}/`;
-        let year = new Date('Y');
-        let select = 'events';
-        switch (type) {
-            case "mxgp":
-                url = `${API_URL}/mxgp/championships/`;
-                select='championships';
-                break;
-            case "promotocross":
-                url = `${API_URL}/promotocross/events/`;
-                break;
-            case "supercross":
-                url = `${API_URL}/supercross/events/`;
-                break;
-        
-            default:
-                break;
+    useEffect( () => {
+        async function fetchData(){
+
+            let url = `${API_URL}/`;
+            let year = new Date('Y');
+            let select = 'events';
+            switch (type) {
+                case "mxgp":
+                    url = `${API_URL}/mxgp/championships/`;
+                    select='championships';
+                    break;
+                case "promotocross":
+                    url = `${API_URL}/promotocross/events/`;
+                    break;
+                case "supercross":
+                    url = `${API_URL}/supercross/events/`;
+                    break;
+            
+                default:
+                    break;
+            }
+            let events = await getEnoughData(year, url, select);
+            console.log(events)
+            setDatas(events);                
         }
-        let events = await getEnoughData(year, url, select);
-        setDatas(events);                
-        
+        fetchData();
     },[datas]);
 
     async function getEnoughData(year, url, select){
@@ -47,6 +51,7 @@ const ListItem = ({ title, type }) => {
         return fetch(`${url}?year=${year}`)
         .then(res => res.json())
         .then(res => {
+            console.log(res);
             return res[select];
         });
     }

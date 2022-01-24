@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import {  faFacebook, faInstagram, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { StaticImage } from "gatsby-plugin-image"
@@ -49,7 +50,7 @@ const HeaderDesktop = ({ siteTitle }) => {
         </div>
       <nav class={styles.header_menu_dropdown}>
         <ul class={styles.menu_dropdown_contents}>
-          <li class={styles.item_active}><a href="">results</a></li>
+          <li class={styles.item_active}><Link to="/results/">Results</Link></li>
           <li class={styles.item_nonactive}><a href="">news</a></li>
           <StaticImage
             src="../images/icons/delimiter.svg"

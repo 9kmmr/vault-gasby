@@ -37,7 +37,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: process.env.WPGRAPHQL_URL || `https://botvisions.com/vault/graphql`,
+        url: process.env.WPGRAPHQL_URL || `http://18.224.119.182/graphql`,
       },
     },
     `gatsby-plugin-sass`,
