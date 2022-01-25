@@ -9,10 +9,10 @@ exports.createPages = async ({ page,  actions }) => {
     defer: true,
   })
 
-  if (page?.path.match(/^\/results/)) {
+  /* if (page?.path.match(/^\/results/)) {
     page.matchPath = "/results/*"
 
     // Update the page.
     createPage(page)
-  }
+  } */
 }

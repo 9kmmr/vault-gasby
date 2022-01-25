@@ -1,16 +1,18 @@
 import * as React from "react"
 
-import Layout from "../components/layout"
 import Seo from "../components/seo"
+import SubMenu from "../components/sub-menu"
+import Collection from "../components/collection"
 
 
-
-
-const ResultPage = () => (
-    <Layout >
-        <Seo title="Results" />
+const ResultPage = (props) => {
+     
+    return  (
+    <div >
+        <Collection />
+        <SubMenu />
            
-    </Layout>
-)
+    </div>
+)}
 
 export default ResultPage

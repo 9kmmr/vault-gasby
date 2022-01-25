@@ -6,6 +6,7 @@ import promotocross from "../images/pro-motocross.png"
 import supercross from "../images/supercross-logo.png"
 import slugify from '@sindresorhus/slugify';
 
+
 const Item = ({ obj, type }) => {
     
     const [itemImage, setImage ] = useState(mxgp);
