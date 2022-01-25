@@ -1,40 +1,60 @@
-import * as React from "react"
-import { StaticImage, getImage  } from "gatsby-plugin-image"
+import  React, { useState, useEffect } from "react"
+import { StaticImage } from "gatsby-plugin-image"
 import * as styles from "./item.module.scss"
+import mxgp from "../images/mxgp.png"
+import promotocross from "../images/pro-motocross.png"
+import supercross from "../images/supercross-logo.png"
+import slugify from '@sindresorhus/slugify';
 
-const Item = ({ data, key, type }) => {
+const Item = ({ obj, type }) => {
+    
+    const [itemImage, setImage ] = useState(mxgp);
+    const [name, setName] = useState(null);
+    useEffect(() => {
 
-    let itemImage = getImage((type==="mxgp")? "../images/mxgp.png":(type==="promotocross"?"../images/pro-motocross.png":"../images/supercross-logo.png"))
+        setName(slugify(obj.name));
+
+        switch (type) {
+            case "mxgp":
+               setImage(mxgp);
+                break;
+            case "promotocross":
+               setImage(promotocross);
+                break;
+            case "supercross":
+               setImage(supercross);
+                break;    
+            default:
+                break;
+        }
+    },[]);
 
     return (
     <div>
-        <div class={styles.collection_item_container}>
-            <div id="ImageContainer" class={styles.collection_item_image_container}>
-                <a href="/results/{{type}}">
-                    <span style={styles.item_image_container}>
-                        <span style={styles.item_image}>
+        <div className={styles.collection_item_container}>
+            <div id="ImageContainer" className={styles.collection_item_image_container}>
+                <a href={`/results/${type}/${obj.year}/${name}`}>
+                    <span className={styles.item_image_container}>
+                        <span className={styles.item_image}>
                             <StaticImage
                                 alt="" aria-hidden="true"
                                 src="../images/bg.svg"
-                                class={styles.race_logo_image_bg}
+                                className={styles.race_logo_image_bg}
                             />
                         </span>
-                        <StaticImage
-                            src={itemImage}
-                            formats={["auto", "webp", "avif"]}
-                            class={styles.race_logo_image}   
-                            alt=""                         
-                        />
+                        <img src={itemImage}  className={styles.race_logo_image} alt="" />                        
                     </span>
                 </a>
             </div>
-            <div title={data.name} class={styles.collection_item_title}><a
-                    href="/results/{type}">{data.name}</a></div>
-            <div title={data.location?data.location:""} class={styles.collection_item_title2}><a
-                    href="/results/{type}">{data.location?data.location:""}</a></div>
-            <div title={data.date?data.date:data.year}
-                class={[styles.collection_item_title2, styles.collection_item_date].join(" ")}>
-                <span>{data.date?data.date:data.year}</span></div>
+            <div title={obj.name} className={styles.collection_item_title}>
+                <a href={`/results/${type}/${obj.year}/${name}`}>{obj.name}</a>
+            </div>
+            <div title={obj.location?obj.location:""} className={styles.collection_item_title2}>
+                <a href={`/results/${type}/${obj.year}/${name}`}>{obj.location?obj.location:""}</a>
+            </div>
+            <div title={obj.date?obj.date:obj.year} className={[styles.collection_item_title2, styles.collection_item_date].join(" ")}>
+                <span>{obj.date?obj.date:obj.year}</span>
+            </div>
         </div>
     </div>
     );

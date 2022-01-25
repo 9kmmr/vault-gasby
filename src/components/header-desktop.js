@@ -10,11 +10,11 @@ const HeaderDesktop = ({ siteTitle }) => {
   }
   return (
   <header
-    class={styles.header_container_desktop}
+    className={styles.header_container_desktop}
   >
-    <div class={styles.header_container_row}>
-      <div class={styles.header_icon_container}>
-        <div class={styles.header_icon_subwrapper}>
+    <div className={styles.header_container_row}>
+      <div className={styles.header_icon_container}>
+        <div className={styles.header_icon_subwrapper}>
           <a href="" target="_blank">
           <FontAwesomeIcon icon={faFacebook} />
           </a>
@@ -29,14 +29,14 @@ const HeaderDesktop = ({ siteTitle }) => {
           </a>
         </div>
       </div>
-      <div class={styles.header_container_search}>
+      <div className={styles.header_container_search}>
         <span></span>
-        <input id="MainSearchInput" value="" placeholder="Search Drivers, Teams, Venues..." onChange={mainSearch} class={styles.search_input} />
+        <input id="MainSearchInput" value="" placeholder="Search Drivers, Teams, Venues..." onChange={mainSearch} className={styles.search_input} />
       </div>
-      <div class={styles.header_container_search_data}></div>
+      <div className={styles.header_container_search_data}></div>
     </div>
-    <div class={styles.header_container_row}>
-        <div class={styles.header_site_logo}>
+    <div className={styles.header_container_row}>
+        <div className={styles.header_site_logo}>
         <a href="">
             <StaticImage
               src="../images/mxvice-logo-rect.png"
@@ -48,10 +48,10 @@ const HeaderDesktop = ({ siteTitle }) => {
 
         </a>
         </div>
-      <nav class={styles.header_menu_dropdown}>
-        <ul class={styles.menu_dropdown_contents}>
-          <li class={styles.item_active}><Link to="/results/">Results</Link></li>
-          <li class={styles.item_nonactive}><a href="">news</a></li>
+      <nav className={styles.header_menu_dropdown}>
+        <ul className={styles.menu_dropdown_contents}>
+          <li className={styles.item_active}><Link to="/results/">Results</Link></li>
+          <li className={styles.item_nonactive}><a href="">news</a></li>
           <StaticImage
             src="../images/icons/delimiter.svg"
             width={2}
@@ -59,10 +59,10 @@ const HeaderDesktop = ({ siteTitle }) => {
             quality={100}
             formats={["auto", "webp", "avif"]}
             alt="Delimiter"
-            class={styles.delimiter}
+            className={styles.delimiter}
             
           />
-          <li class={styles.item_nonactive}><a href="">about us</a></li>
+          <li className={styles.item_nonactive}><a href="">about us</a></li>
         </ul>
       </nav>
     </div>

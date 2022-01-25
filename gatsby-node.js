@@ -1,6 +1,6 @@
 const path = require('path');
 
-exports.createPages = async ({ actions }) => {
+exports.createPages = async ({ page,  actions }) => {
   const { createPage } = actions
   createPage({
     path: "/using-dsg",
@@ -8,4 +8,11 @@ exports.createPages = async ({ actions }) => {
     context: {},
     defer: true,
   })
+
+  if (page?.path.match(/^\/results/)) {
+    page.matchPath = "/results/*"
+
+    // Update the page.
+    createPage(page)
+  }
 }

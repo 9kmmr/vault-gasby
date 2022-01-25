@@ -13,7 +13,7 @@ import HeaderDesktop from "./header-desktop"
 import HeaderMobile from "./header-mobile"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ({ children,  pageClass }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
       <HeaderDesktop siteTitle={data.site.siteMetadata?.title || `Title`} />
       <HeaderMobile siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
-        
+        className={pageClass}
       >
         <main>{children}</main>
         <footer

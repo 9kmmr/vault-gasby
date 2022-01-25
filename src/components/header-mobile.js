@@ -5,9 +5,9 @@ import { StaticImage } from "gatsby-plugin-image"
 import * as styles from  "./header-mobile.module.scss"
 
 const HeaderMobile = ({ siteTitle }) => (
-    <header class={styles.header_container_mobile}>
-        <div class={styles.header_container_row}>
-            <div class={styles.header_container_logo_mb}>
+    <header className={styles.header_container_mobile}>
+        <div className={styles.header_container_row}>
+            <div className={styles.header_container_logo_mb}>
                 <a href="">
                 <StaticImage
                     src="../images/gatsby-astronaut.png"
@@ -20,7 +20,7 @@ const HeaderMobile = ({ siteTitle }) => (
                    
                 </a>
             </div>
-        <div class={styles.search_menu_mobile_container}>
+        <div className={styles.search_menu_mobile_container}>
             <StaticImage
                     src="../images/icons/search-mobile.svg"
                     width={16}
@@ -28,7 +28,7 @@ const HeaderMobile = ({ siteTitle }) => (
                     quality={100}
                     formats={["auto", "webp", "avif"]}
                     alt="Search icon"    
-                    class="search_mb_icon mb_icon"        
+                    className="search_mb_icon mb_icon"        
                   />
             
         </div>
