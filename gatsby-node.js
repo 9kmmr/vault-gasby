@@ -15,4 +15,14 @@ exports.createPages = async ({ page,  actions }) => {
     // Update the page.
     createPage(page)
   } */
+
+  const templateOfYourCharacterPage = path.resolve(`src/pages/resultData.js`);
+  characters.forEach(edge => {
+    createPage({
+      path: `/${edge.node.id}`,
+      component: templateOfYourCharacterPage,
+      context: {id: edge.node.uid, name: edge.node.name } // This is to pass data as props to your component.
+    })
+  })
+
 }

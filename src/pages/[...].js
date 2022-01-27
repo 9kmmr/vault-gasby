@@ -1,6 +1,5 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
 import { Router, Link, Location } from "@reach/router"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 
@@ -14,12 +13,13 @@ const IndexPage = () => (
     <FadeTransitionRouter>    
       <Home path="/" />
       <Results path="/results/" />
-      <ResultPage path="results/mxgp/:year/:championship" />
-      <ResultPage path="/results/mxgp/:year/:championship/:classes/:event/:race/:result" />
-      <ResultPage path="/results/promotocross/:year/:event/:race/:result" />
-      <ResultPage path="/results/supercross/:year/:event/:race/:result" />
-      <ResultPage path="/results/promotocross/riders/:letterentry" />
-      <ResultPage path="/results/promotocross/rider/:name" />
+      <ResultPage path="results/mxgp/:year/:championship" type="mxgp" />
+      <ResultPage path="/results/mxgp/:year/:championship/:classes/:event/:race/:result" type="mxgp" />
+      <ResultPage path="/results/mxgp/:year/:championship/:race/:result" type="mxgp" />
+      <ResultPage path="/results/promotocross/:year/:event/:race/:result" type="promotocross" />
+      <ResultPage path="/results/supercross/:year/:event/:race/:result" type="supercross" />
+      <ResultPage path="/results/promotocross/riders/:letterentry" type="promotocross" />
+      <ResultPage path="/results/promotocross/rider/:name" type="promotocross" />
     </FadeTransitionRouter>
   </Layout>
 )

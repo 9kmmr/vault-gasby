@@ -5,6 +5,7 @@ import mxgp from "../images/mxgp.png"
 import promotocross from "../images/pro-motocross.png"
 import supercross from "../images/supercross-logo.png"
 import slugify from '@sindresorhus/slugify';
+import { Link } from "gatsby"
 
 
 const Item = ({ obj, type }) => {
@@ -34,7 +35,7 @@ const Item = ({ obj, type }) => {
     <div>
         <div className={styles.collection_item_container}>
             <div id="ImageContainer" className={styles.collection_item_image_container}>
-                <a href={`/results/${type}/${obj.year}/${name}`}>
+                <Link to={`/results/${type}/${obj.year}/${name}`}>
                     <span className={styles.item_image_container}>
                         <span className={styles.item_image}>
                             <StaticImage
@@ -45,7 +46,7 @@ const Item = ({ obj, type }) => {
                         </span>
                         <img src={itemImage}  className={styles.race_logo_image} alt="" />                        
                     </span>
-                </a>
+                </Link>
             </div>
             <div title={obj.name} className={styles.collection_item_title}>
                 <a href={`/results/${type}/${obj.year}/${name}`}>{obj.name}</a>

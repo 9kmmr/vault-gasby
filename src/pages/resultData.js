@@ -6,6 +6,10 @@ import Collection from "../components/collection"
 
 
 const ResultPage = (props) => {
+
+
+    console.log(props)
+
      
     return  (
     <div >
