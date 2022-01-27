@@ -7,17 +7,10 @@ import * as styles from "./results.module.scss"
 
 
 
-const Results = ({ siteTitle }) => 
+const Results = (props) => 
 {
 
-    const [count, setCount] = useState(0);
-
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `You clicked ${count} times`;
-  });
-
+   
 
 return (
     <div class="styled__ClassificationResultsContainer-sc-abt6yy-0 jrAsZi">
