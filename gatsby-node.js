@@ -30,100 +30,103 @@ exports.createPages = async ({ page, actions }) => {
 
   // pre-render mxgp pages
   const mxgpYears = await getMXGPYears();
-  mxgpYears.years.forEach(async mxgpyear => {
+  // mxgpYears.years.forEach(async (mxgpyear) => {
 
-    const year = mxgpyear.year;
-    let mxgpChampionships = await getMXGPChampionships(year);
+  //   const year = mxgpyear.year;
+  //   //console.log(year)
+  //   let mxgpChampionships = await getMXGPChampionships(year);
+  //   //console.log('mxgpo ch', mxgpChampionships)
+  //   mxgpChampionships.championships.forEach(async (championship) => {
 
-    mxgpChampionships.championships.forEach(async championship => {
+  //     const championshipid = championship.id
+  //     let mxgpClasses = await getMXGPClasses(year, championshipid);
 
-      const championshipid = championship.id
-      let mxgpClasses = await getMXGPClasses(year, championshipid);
+  //     if (mxgpClasses.classes.length > 0) {
 
-      if (mxgpClasses.classes.length > 0) {
+  //       mxgpClasses.classes.forEach(async (mxgpclass) => {
 
-        mxgpClasses.classes.forEach(async mxgpclass => {
+  //         const classid = mxgpclass.id;
 
-          const classid = mxgpclass.id
-          let mxgpEvents = await getMXGPEvents(year, championshipid, classid);
-          mxgpEvents.events.forEach(async event => {
-            const eventid = event.id;
+  //         let mxgpEvents = await getMXGPEvents(year, championshipid, classid);
 
-            let Races = await getMXGPRaces(year, championshipid, classid, eventid);
+  //         mxgpEvents.events.forEach(async (event) => {
+            
+  //           const eventid = event.id;
 
-            Races.races.forEach(async race => {
+  //           let Races = await getMXGPRaces(year, championshipid, classid, eventid);
 
-              const raceid = race.id;
-              let mxgpResults = await getMXGPResults(year, championshipid, classid, eventid, raceid);
+  //           Races.races.forEach(async (race) => {
 
-              mxgpResults.forEach(result => {
-                try {
-                  createPage({
-                    path: `/results/${year}/mxgp/${slugify(championship.name)}/${slugify(mxgpclass.name)}/${slugify(event.name)}/${slugify(race.name)}/${slugify(result.name)}`,
-                    component: require.resolve("./src/templates/result-page.js"),
-                    context: { year: year, championship: championship, classes: mxgpclass, event: event, race: race, result: result },// This is to pass data as props to your component.
-                    defer: true
-                  })
+  //             const raceid = race.id;
+  //             let mxgpResults = await getMXGPResults(year, championshipid, classid, eventid, raceid);
+
+  //             mxgpResults.forEach(async result => {
+  //               try {
+  //                 await createPage({
+  //                   path: `/results/${year}/mxgp/${slugify(championship.name)}/${slugify(mxgpclass.name)}/${slugify(event.name)}/${slugify(race.name)}/${slugify(result.name)}`,
+  //                   component: require.resolve("./src/templates/result-page.js"),
+  //                   context: { year: year, championship: championship, classes: mxgpclass, event: event, race: race, result: result },// This is to pass data as props to your component.
+  //                   defer: true
+  //                 })
                   
-                } catch (error) {
-                  console.log("err on create page", error)
-                }
+  //               } catch (error) {
+  //                 console.log("err on create page", error)
+  //               }
 
-              });
-            })
-          })
-        });
-      } else {
-        let Races = await getMXGPRaces(year, championshipid);
-        Races.races.forEach(async race => {
+  //             });
+  //           })
+  //         })
+  //       });
+  //     } else {
+  //       let Races = await getMXGPRaces(year, championshipid);
+  //       Races.races.forEach(async (race) => {
 
-          const raceid = race.id;
-          let mxgpResults = await getMXGPResults(year, championshipid, null, null, raceid);
+  //         const raceid = race.id;
+  //         let mxgpResults = await getMXGPResults(year, championshipid, null, null, raceid);
 
-          mxgpResults.results.forEach(result => {
-            try {
-              createPage({
-                path: `/results/${year}/mxgp/${slugify(championship.name)}/${slugify(race.name)}/${slugify(result.name)}`,
-                component: require.resolve("./src/templates/result-page.js"),
-                context: { year: year, championship: championship, race: race, result: result },// This is to pass data as props to your component.
-                defer: true
-              })              
-            } catch (error) {
-              console.log("err on create page", error)
-            }
-          });
-        })
-      }
-    });
+  //         mxgpResults.results.forEach(async (result) => {
+  //           try {
+  //             await createPage({
+  //               path: `/results/${year}/mxgp/${slugify(championship.name)}/${slugify(race.name)}/${slugify(result.name)}`,
+  //               component: require.resolve("./src/templates/result-page.js"),
+  //               context: { year: year, championship: championship, race: race, result: result },// This is to pass data as props to your component.
+  //               defer: true
+  //             })              
+  //           } catch (error) {
+  //             console.log("err on create page", error)
+  //           }
+  //         });
+  //       })
+  //     }
+  //   });
 
-  });
+  // });
 
 
 
 
   // pre-render pro-motocross pages
   const promotocrossYears = await getYears("promotocross", [], 50, 0);
-
-  const promotocrossClasses = await getClasses("promotocross");
-
-  promotocrossYears.years.forEach(async proyear => {
+  //console.log(promotocrossYears)
+  
+  promotocrossYears.forEach(async proyear => {
     const year = proyear.year;
 
     let promotocrossEvents = await getEvents("promotocross", year, [], 50, 0);
 
-    promotocrossEvents.events.forEach(async event => {
+    promotocrossEvents.forEach(async event => {
 
       let promotocrossRaces = await getRaces("promotocross", year, event.name, [], 50, 0);
 
-      promotocrossRaces.races.forEach(race => {
+      promotocrossRaces.forEach(async race => {
         try {
           
-          createPage({
+          /* await createPage({
             path: `/results/${year}/promotocross/${slugify(event.name)}/${slugify(race.classType.name)}/${slugify(race.name)}/`,
             component: require.resolve("./src/templates/result-page-2.js"),
             context: { year: year, event: event, race: race, classes: race.classType },// This is to pass data as props to your component.
             defer: true
-          })
+          }) */
         } catch (error) {
           console.log("err on create page", error)
         }
@@ -136,66 +139,67 @@ exports.createPages = async ({ page, actions }) => {
   const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
   letters.forEach(async letter => {
 
-    let promotocrossRiders = await getRiders(letter);
-    try {
-      
-      createPage({
-        path: `/results/promotocross/riders/${letter}/`,
-        component: require.resolve("./src/templates/riders-letter.js"),
-        context: { letter: letter, riders: promotocrossRiders },// This is to pass data as props to your component.
-        defer: true
-      })
-    } catch (error) {
-      
-    }
-    promotocrossRiders.forEach(async rider => {
-      try {
-        
-        createPage({
-          path: `/results/promotocross/rider/${slugify(rider.name)}/`,
-          component: require.resolve("./src/templates/rider-page.js"),
-          context: { riders: rider },// This is to pass data as props to your component.
-          defer: true
-        })
-      } catch (error) {
-        console.log("err on create page", error)
-      }
+    // let promotocrossRiders = await getRiders(letter);
 
-    })
+    // try {
+      
+    //   /* await createPage({
+    //     path: `/results/promotocross/riders/${letter}/`,
+    //     component: require.resolve("./src/templates/riders-letter.js"),
+    //     context: { letter: letter, riders: promotocrossRiders },// This is to pass data as props to your component.
+    //     defer: true
+    //   }) */
+    // } catch (error) {
+      
+    // }
+    // promotocrossRiders.forEach(async rider => {
+    //   try {
+        
+    //     /* await createPage({
+    //       path: `/results/promotocross/rider/${slugify(rider.name)}/`,
+    //       component: require.resolve("./src/templates/rider-page.js"),
+    //       context: { riders: rider },// This is to pass data as props to your component.
+    //       defer: true
+    //     }) */
+    //   } catch (error) {
+    //     console.log("err on create page", error)
+    //   }
+
+    // })
 
 
   })
 
 
   // pre-render supercross pages
-  const supercrossYears = await getYears("supercross", [], 50, 0);
+  //const supercrossYears = await getYears("supercross", [], 50, 0);
+  //console.log("super",supercrossYears)
+  //const supercrossClasses = await getClasses("supercross");
+  //console.log(supercrossClasses)
+  // supercrossYears.forEach(async proyear => {
+  //   const year = proyear.year;
 
-  const supercrossClasses = await getClasses("supercross");
+  //   let supercrossEvents = await getEvents("supercross", year, [], 50, 0);
 
-  supercrossYears.years.forEach(async proyear => {
-    const year = proyear.year;
+  //   supercrossEvents.forEach(async event => {
 
-    let supercrossEvents = await getEvents("supercross", year, [], 50, 0);
+  //     let supercrossRaces = await getRaces("supercross", year, event.name, [], 50, 0);
 
-    supercrossEvents.events.forEach(async event => {
+  //     supercrossRaces.forEach(async race => {
+  //       try {
+  //         // await createPage({
+  //         //   path: `/results/${year}/supercross/${slugify(event.name)}/${slugify(race.classType.name)}/${slugify(race.name)}/`,
+  //         //   component: require.resolve("./src/templates/result-page-2.js"),
+  //         //   context: { year: year, event: event, race: race, classes: race.classType },// This is to pass data as props to your component.
+  //         //   defer: true
+  //         // })          
+  //       } catch (error) {
+  //         console.log("err on create page", error)
+  //       }
+  //     });
+  //   })
 
-      let supercrossRaces = await getRaces("supercross", year, event.name, [], 50, 0);
-
-      supercrossRaces.races.forEach(async race => {
-        try {
-          createPage({
-            path: `/results/${year}/supercross/${slugify(event.name)}/${slugify(race.classType.name)}/${slugify(race.name)}/`,
-            component: require.resolve("./src/templates/result-page-2.js"),
-            context: { year: year, event: event, race: race, classes: race.classType },// This is to pass data as props to your component.
-            defer: true
-          })          
-        } catch (error) {
-          console.log("err on create page", error)
-        }
-      });
-    })
-
-  })
+  // })
 
 
 
@@ -240,7 +244,7 @@ async function getMXGPEvents(year, championship, classes) {
   }
 }
 
-async function getMXGPRaces(year, championship, classes = null, event = null) {
+async function getMXGPRaces(year, championship, classes, event) {
   try {
     
     if (classes && event) {
